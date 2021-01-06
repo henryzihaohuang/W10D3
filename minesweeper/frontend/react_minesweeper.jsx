@@ -1,7 +1,6 @@
 import React from 'react';
-import * as Minesweeper from "./minesweeper";
-import Game from './components/game.jsx';
-
+import ReactDOM from 'react-dom'
+import Game from './components/Game.jsx';
 
 
 

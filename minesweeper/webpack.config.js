@@ -3,8 +3,9 @@ var path = require('path');
 module.exports = {
   entry: './frontend/react_minesweeper.jsx',
   output: {
-    filename: './dist/bundle.js',
-  },
+    path: path.resolve(__dirname, 'dist'),
+    filename: "bundle.js"
+},
   module: {
     rules: [
       {
