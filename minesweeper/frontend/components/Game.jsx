@@ -1,7 +1,7 @@
-import { Board } from "../../my-app/minesweeper";
-import * as Minesweeper from "./minesweeper";
+import Board from "./board";
+import * as Minesweeper from "../minesweeper";
 
-export class Game extends React.Component{
+export default class Game extends React.Component{
     constructor(){
 
         this.state={board: new Minesweeper.Board}
@@ -9,6 +9,9 @@ export class Game extends React.Component{
     }
 
     updateGame(){}
+
+
+    
 
     render(){
         return(
