@@ -230,7 +230,9 @@ var Game = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Board__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "board-border"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Board__WEBPACK_IMPORTED_MODULE_0__["default"], {
         board: this.state.board,
         updateGame: this.updateGame
       }));
@@ -286,15 +288,37 @@ var Tile = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(Tile);
 
   function Tile(props) {
+    var _this;
+
     _classCallCheck(this, Tile);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      revealed: _this.props.tile.revealed
+    };
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Tile, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "handleClick",
+    value: function handleClick(event) {
+      event.preventDefault();
+      this.setState({
+        revealed: !this.state.revealed
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "T");
+      var char = this.state.revealed ? this.props.tile.bombed ? "☹" : this.props.tile.flagged ? "⚐" : "".concat(this.props.tile.adjacentBombCount()) : "";
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: this.handleClick,
+        className: this.props.tile.bombed ? "tile bombed" : this.props.tile.flagged ? "tile flagged" : this.state.revealed ? "tile revealed" : "tile"
+      }, char);
     }
   }]);
 
